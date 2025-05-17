@@ -1,0 +1,14 @@
+name: Delpoy Docker
+
+on:
+    push:
+        branches:
+            - main
+
+jobs: 
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - run: docker build -t aakashtyagi/fastapi-docker -f Dockerfile.dev . 
+        - run: docker run aakashtyagi/fastapi-docker npm test
